@@ -4,14 +4,10 @@ body {
   line-height: 20px;
   font-weight: 400;
   color: #3b3b3b;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  ;
 }
 
 .table {
   margin: 0 0 0 0;
-/*  width: 100%;*/
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: table;
 }
@@ -35,13 +31,6 @@ body {
 .row.blue {
   background: #2980b9;
 }
-@media screen and (max-width: 580px) {
-  .row {
-    padding: 8px 0;
-    display: block;
-  }
-}
-
 .cell {
   padding: 6px 12px;
   display: table-cell;
