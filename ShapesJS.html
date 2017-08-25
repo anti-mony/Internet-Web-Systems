@@ -1,0 +1,332 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Area | Perimeter Calculator</title>
+    <meta name="JS Starter" content="Internet and Web Systems">
+    <meta name="Sushant Bansal" content="Internet and Web Systems">
+    <style>
+        button {
+            margin: 8px;
+            padding: 4px;
+            background-color: white;
+            color: firebrick;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        h3 {
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="background-color: darkslategray" onload="addOptions()">
+    <H1 style="color: white; text-align: center"> Area and Perimeter Calculator </H1>
+    <div id="spOption" style="display:block; text-align: center;"></div>
+    <div>
+        <div id="fields" style="width: 50%;display:block; text-align: center; padding-top: 80px;float:left"></div>
+        <canvas id="canva" height="400px" width="400px" style="float:left; padding-top: 80px;"></canvas>
+    </div>
+
+
+    <script>
+        var optns = document.getElementById("spOption");
+        var flds = document.getElementById("fields");
+        var can = document.getElementById("canva");
+        var context = can.getContext('2d');
+        var circl = document.createElement("button");
+        var tri = document.createElement("button");
+        var squ = document.createElement("button");
+        var rect = document.createElement("button");
+        var hex = document.createElement("button");
+        circl.innerHTML = "Circle";
+        tri.innerHTML = "Triangle";
+        squ.innerHTML = "Square";
+        rect.innerHTML = "Rectangle";
+        hex.innerHTML = "Regular Hexagon";
+
+        function addOptions() {
+            optns.appendChild(circl);
+            optns.appendChild(tri);
+            optns.appendChild(squ);
+            optns.appendChild(rect);
+            optns.appendChild(hex);
+        }
+
+        circl.onclick = function() {
+            circl.disabled = true;
+            tri.disabled = true;
+            squ.disabled = true;
+            rect.disabled = true;
+            hex.disabled = true;
+            var lab = document.createElement("h3");
+            lab.innerHTML = "Enter the Radius of Circle";
+            var inpR = document.createElement("input");
+            flds.appendChild(lab);
+            flds.appendChild(inpR);
+            var sub = document.createElement("button");
+            sub.innerHTML = "Submit";
+            flds.appendChild(sub);
+            context.arc(can.width / 2, can.height / 2, 150, 0, 2 * Math.PI, false);
+            context.fillStyle = 'firebrick';
+            context.fill();
+            context.stroke();
+            sub.onclick = function res() {
+                var r = inpR.value;
+                var area = 3.14 * +r * +r;
+                var peri = 2 * 3.14 * r;
+                // console.log(area);
+                alert("Area of Circle is: " + area + " and perimeter is: " + peri);
+            }
+            var res = document.createElement("button");
+            res.innerHTML = "Reset";
+            flds.appendChild(res);
+            res.onclick = function clean() {
+                circl.disabled = false;
+                tri.disabled = false;
+                squ.disabled = false;
+                rect.disabled = false;
+                hex.disabled = false;
+                while (flds.firstChild) {
+                    flds.removeChild(flds.firstChild);
+                }
+                context.clearRect(0, 0, can.width, can.height);
+                context.beginPath();
+            }
+        }
+
+        tri.onclick = function() {
+            circl.disabled = true;
+            tri.disabled = true;
+            squ.disabled = true;
+            rect.disabled = true;
+            hex.disabled = true;
+            var lab1 = document.createElement("h3");
+            var lab2 = document.createElement("h3");
+            var lab3 = document.createElement("h3");
+            var labx = document.createElement("h3");
+            lab1.innerHTML = "Enter side 1";
+            lab2.innerHTML = "Enter side 2";
+            lab3.innerHTML = "Enter side 3";
+            var inp1 = document.createElement("input");
+            var inp2 = document.createElement("input");
+            var inp3 = document.createElement("input");
+            flds.appendChild(lab1);
+            flds.appendChild(inp1);
+            flds.appendChild(lab2);
+            flds.appendChild(inp2);
+            flds.appendChild(lab3);
+            flds.appendChild(inp3);
+            flds.appendChild(labx);
+            var sub = document.createElement("button");
+            sub.innerHTML = "Submit";
+            flds.appendChild(sub);
+            context.moveTo(150, 20);
+            context.lineTo(20, 300);
+            context.lineTo(300, 300);
+            context.fillStyle = 'firebrick';
+            context.fill();
+            context.stroke();
+            sub.onclick = function res() {
+                var a = inp1.value;
+                var b = inp2.value;
+                var c = inp3.value;
+                var peri = +a + +b + +c;
+                var s = peri / 2;
+                var area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+                // console.log(area);
+                alert("Area of Triangle is: " + area + " and perimeter is: " + peri);
+            }
+            var res = document.createElement("button");
+            res.innerHTML = "Reset";
+            flds.appendChild(res);
+            res.onclick = function clean() {
+                circl.disabled = false;
+                tri.disabled = false;
+                squ.disabled = false;
+                rect.disabled = false;
+                hex.disabled = false;
+                while (flds.firstChild) {
+                    flds.removeChild(flds.firstChild);
+                }
+                context.clearRect(0, 0, can.width, can.height);
+                context.beginPath();
+            }
+        }
+
+        squ.onclick = function() {
+            circl.disabled = true;
+            tri.disabled = true;
+            squ.disabled = true;
+            rect.disabled = true;
+            hex.disabled = true;
+            var lab = document.createElement("h3");
+            lab.innerHTML = "Enter the side of the Square";
+            var inpR = document.createElement("input");
+            flds.appendChild(lab);
+            flds.appendChild(inpR);
+            var sub = document.createElement("button");
+            sub.innerHTML = "Submit";
+            flds.appendChild(sub);
+            context.rect(20, 20, 350, 350);
+            context.fillStyle = 'firebrick';
+            context.fill();
+            context.stroke();
+            sub.onclick = function res() {
+                var r = inpR.value;
+                var area = r * r;
+                var peri = 4 * r;
+                // console.log(area);
+                alert("Area of Square is: " + area + " and perimeter is: " + peri);
+            }
+            var res = document.createElement("button");
+            res.innerHTML = "Reset";
+            flds.appendChild(res);
+            res.onclick = function clean() {
+                circl.disabled = false;
+                tri.disabled = false;
+                squ.disabled = false;
+                rect.disabled = false;
+                hex.disabled = false;
+                while (flds.firstChild) {
+                    flds.removeChild(flds.firstChild);
+                }
+                context.clearRect(0, 0, can.width, can.height);
+                context.beginPath();
+            }
+        }
+        rect.onclick = function() {
+            circl.disabled = true;
+            tri.disabled = true;
+            squ.disabled = true;
+            rect.disabled = true;
+            hex.disabled = true;
+            var labx = document.createElement("h3");
+            var lab1 = document.createElement("h3");
+            lab1.innerHTML = "Enter the Length of the rectangle";
+            var lab2 = document.createElement("h3");
+            lab2.innerHTML = "Enter the Breadth of the rectangle";
+            var inp1 = document.createElement("input");
+            var inp2 = document.createElement("input");
+            flds.appendChild(lab1);
+            flds.appendChild(inp1);
+            flds.appendChild(lab2);
+            flds.appendChild(inp2);
+            flds.appendChild(labx);
+            var sub = document.createElement("button");
+            sub.innerHTML = "Submit";
+            flds.appendChild(sub);
+            context.rect(20, 20, 350, 200);
+            context.fillStyle = 'firebrick';
+            context.fill();
+            context.stroke();
+            sub.onclick = function res() {
+                var l = inp1.value;
+                var b = inp2.value;
+                var area = +l * +b;
+                var peri = 2 * l + 2 * b;
+                // console.log(area);
+                alert("Area of Rectangle is: " + area + " and perimeter is: " + peri);
+            }
+            var res = document.createElement("button");
+            res.innerHTML = "Reset";
+            flds.appendChild(res);
+            res.onclick = function clean() {
+                circl.disabled = false;
+                tri.disabled = false;
+                squ.disabled = false;
+                rect.disabled = false;
+                hex.disabled = false;
+                while (flds.firstChild) {
+                    flds.removeChild(flds.firstChild);
+                }
+                context.clearRect(0, 0, can.width, can.height);
+                context.beginPath();
+            }
+        }
+        hex.onclick = function() {
+            circl.disabled = true;
+            tri.disabled = true;
+            squ.disabled = true;
+            rect.disabled = true;
+            hex.disabled = true;
+            var lab = document.createElement("h3");
+            lab.innerHTML = "Enter the Side of the Hexagon";
+            var inpR = document.createElement("input");
+            flds.appendChild(lab);
+            flds.appendChild(inpR);
+            var sub = document.createElement("button");
+            sub.innerHTML = "Submit";
+            flds.appendChild(sub);
+            x0 = 20; // starting values
+            y0 = 20;
+
+            x = x0; // operating vars
+            y0 = 20;
+
+            xx = 120; // size of the legs of the shape
+            yy = 120;
+
+            // perform the moves and line drawing
+            x = x0;
+            y = y0;
+            context.moveTo(x, y);
+
+            x += xx;
+            y += 0;
+            context.moveTo(x, y);
+
+            x += xx;
+            y += 0;
+            context.lineTo(x, y);
+
+            x += xx;
+            y += yy;
+            context.lineTo(x, y);
+
+            x += (xx * -1);
+            y += yy;
+            context.lineTo(x, y);
+
+            x += (xx * -1);
+            y += 0;
+            context.lineTo(x, y);
+
+            x += (xx * -1);
+            y += (yy * -1);
+            context.lineTo(x, y);
+
+            x += xx;
+            y += (yy * -1);
+            context.lineTo(x, y);
+            context.fillStyle = 'firebrick';
+            context.fill();
+            context.stroke();
+            sub.onclick = function res() {
+                var r = inpR.value;
+                var area = 2.59807 * +r;
+                var peri = 6 * +r;
+                // console.log(area);
+                alert("Area of Hexagon is: " + area + " and perimeter is: " + peri);
+            }
+            var res = document.createElement("button");
+            res.innerHTML = "Reset";
+            flds.appendChild(res);
+            res.onclick = function clean() {
+                circl.disabled = false;
+                tri.disabled = false;
+                squ.disabled = false;
+                rect.disabled = false;
+                hex.disabled = false;
+                while (flds.firstChild) {
+                    flds.removeChild(flds.firstChild);
+                }
+                context.clearRect(0, 0, can.width, can.height);
+                context.beginPath();
+            }
+        }
+    </script>
+</body>
+
+</html>
