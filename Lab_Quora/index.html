@@ -39,6 +39,38 @@
 
     </nav>
 
+    <div class="jumbotron row">
+        <section class="col-md-4">
+            <h1 class="display-3">Trending Topics</h1>
+            <p class="lead">Topics based on Geographic Data!</p>
+            <hr class="my-4">
+            <a class="btn btn-primary" href="#" role="button">Floods</a>
+            <a class="btn btn-primary" href="#" role="button">Mumbai</a>
+            <a class="btn btn-primary" href="#" role="button">Donald Trump</a>
+            <p></p>
+            <a class="btn btn-primary" href="#" role="button">GST</a>
+            <a class="btn btn-primary" href="#" role="button">Dream Theatre</a>
+            <a class="btn btn-primary" href="#" role="button">Ganpati</a>
+            <a class="btn btn-primary" href="#" role="button">Modi</a>
+
+        </section>
+        <section id="map" class="col-md-8"></section>
+
+    </div>
+
+    <script>
+        function initMap() {
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 27,
+                    lng: 77
+                },
+                zoom: 6
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWbSrKPiCcxPVLAq4rovC6wHLN3kdk8uM&callback=initMap" async defer></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
