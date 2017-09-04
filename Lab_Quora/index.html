@@ -22,6 +22,7 @@
             height: 200px;
             width: 100%;
             background-color: #343a40;
+            padding: 16px;
         }
     </style>
 </head>
@@ -99,9 +100,14 @@
                     </div>
                     <p class="card-text">Phasellus sit amet libero eget nisi mattis pretium. Proin dignissim, orci eu maximus sollicitudin, ex est efficitur velit, interdum rutrum mauris sapien ac tortor. Vestibulum a metus risus. Mauris tempor auctor consequat. Nullam tempor
                         vehicula tristique. Aenean at diam pretium, pretium velit vitae, gravida nunc. Fusce sit amet diam vitae leo condimentum congue eget ac felis. Suspendisse mollis sit amet mi non sagittis.</p>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Upvote"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Downvote"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                    <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
+                        <label class="btn btn-outline-success btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                        </label>
+                        <label class="btn btn-outline-danger btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        </label>
+                        <button class="btn btn-outline-warning btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
@@ -117,9 +123,14 @@
                     </div>
                     <p class="card-text">Phasellus sit amet libero eget nisi mattis pretium. Proin dignissim, orci eu maximus sollicitudin, ex est efficitur velit, interdum rutrum mauris sapien ac tortor. Vestibulum a metus risus. Mauris tempor auctor consequat. Nullam tempor
                         vehicula tristique. Aenean at diam pretium, pretium velit vitae, gravida nunc. Fusce sit amet diam vitae leo condimentum congue eget ac felis. Suspendisse mollis sit amet mi non sagittis.</p>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Upvote"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Downvote"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                    <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
+                        <label class="btn btn-outline-success btn-sm">
+                                        <input type="radio" name="options" id="option1" autocomplete="off"> <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                        </label>
+                        <label class="btn btn-outline-danger btn-sm">
+                                        <input type="radio" name="options" id="option2" autocomplete="off"> <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        </label>
+                        <button class="btn btn-outline-warning btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
@@ -148,15 +159,41 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Ask! </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <h1 class="display-3 mx-auto" style="color:#FFF">Thank You</h1>
+    <footer class="row mx-0">
+        <section class="col-md-4 ">
+            <strong class="d-flex justify-content-center" style="color:#FFF;margin: 8px">Get to Know Us</strong>
+            <ul style="color:#FFF; padding: 0px">
+                <li class="d-flex justify-content-center"><a class="btn" href="">About Us</a></li>
+                <li class="d-flex justify-content-center"><a class="btn" href="">Contact Us</a></li>
+                <li class="d-flex justify-content-center"><a class="btn" href="">Careers</a></li>
+
+            </ul>
+        </section>
+        <section class="col-md-4">
+            <strong class="d-flex justify-content-center" style="color:#FFF;margin: 8px">Connect with us</strong>
+            <ul style="color:#FFF; padding: 0px">
+                <li class="d-flex justify-content-center"><a class="btn " href=""><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                <li class="d-flex justify-content-center"><a class="btn " href=""><i class="fa fa-twitter" aria-hidden="true"></i> Twittter</a></li>
+                <li class="d-flex justify-content-center"><a class="btn " href=""><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+
+            </ul>
+        </section>
+        <section class="col-md-4">
+            <strong class="d-flex justify-content-center" style="color:#FFF;margin: 8px">Support</strong>
+            <ul style="color:#FFF; padding: 0px">
+                <li class="d-flex justify-content-center"><a class="btn" href=""><i class="fa fa-envelope" aria-hidden="true"></i> Email</a></li>
+                <li class="d-flex justify-content-center"><a class="btn" href=""><i class="fa fa-phone-square" aria-hidden="true"></i> Mobile</a></li>
+                <li class="d-flex justify-content-center"><a class="btn" href=""><i class="fa fa-list" aria-hidden="true"></i> Forums</a></li>
+
+            </ul>
+        </section>
     </footer>
 
     <script>
@@ -180,6 +217,10 @@
     <script type="text/javascript">
         $(function() {
             $("[data-toggle='tooltip']").tooltip();
+        });
+        $('button').click(function() {
+            $('.btn-group').find('label').removeClass('active')
+                .end().find('[type="radio"]').prop('checked', false);
         });
     </script>
 </body>
