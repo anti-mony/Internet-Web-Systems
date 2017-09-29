@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script src="https://use.fontawesome.com/e934e1e459.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
@@ -30,9 +30,25 @@
             <li class="nav-item mx-2 my-auto">
                 <a class="nav-link" data-toggle="tab" href="#flying"><strong>Flying</strong></a>
             </li>
+            <li class="nav-item mx-2 my-auto">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group  btn-group-sm" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Custom Categories        
+                        </button>
+                        <div class="dropdown-menu" id="cusItemMenu" aria-labelledby="btnGroupDrop1">
+
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-dark" data-toggle="popover" title="Enter Category Name" data-placement="bottom" data-html='true'>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </li>
         </ul>
+        <button class="btn my-3 disabled"><strong>Team Size </strong><strong id="nItems">0</strong></button>
     </nav>
-    <div class="tab-content">
+    <div class="tab-content" id="tcontent">
         <div class="tab-pane fade show active" id="electric" role="tabpanel">
             <section class="row mx-0">
                 <div class="card col-md-2 mx-4 my-4 ml-5 py-2">
@@ -255,8 +271,8 @@
         </div>
     </div>
 
-    <div class="mx-4 my-1">
-        <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#bill">Assemble Team !</button>
+    <div class="mx-4">
+        <button type="button" class="btn btn-success btn-lg btn-block fixed-bottom rounded-0" data-toggle="modal" data-target="#bill">Assemble Team !</button>
     </div>
 
     <div class="modal fade" id="bill" tabindex="-1" role="dialog" aria-labelledby="billM" aria-hidden="true">
@@ -298,6 +314,14 @@
             </div>
         </div>
     </div>
+    <div id="popover-content" class="invisible">
+        <div class="input-group">
+            <input type="text" class="form-control" id="catName">
+            <span class="input-group-btn">
+              <button id="subm" class="btn btn-primary" type="button" onclick="addNewCategory()">Submit!</button>
+            </span>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -307,7 +331,18 @@
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         });
+        $("[data-toggle=popover]").popover({
+            animation: true,
+            html: true,
+            content: function() {
+                return $('#popover-content').html();
+            }
+        });
+        $(document).on("click", "#subm", function(e) {
+            $('[data-toggle="popover"]').trigger('click');
+        });
         var addItem = function(Name, Cost) {
+            var cart = document.getElementById("nItems");
             var pok = document.getElementById("boughtPoke");
             var cos = document.getElementById("costPoke");
             var p = document.createElement("li");
@@ -325,6 +360,29 @@
             console.log(sum);
             sum = +sum + +Cost;
             tc.innerHTML = +sum;
+            cart.innerHTML = +cart.innerHTML + 1;
+        };
+        var addNewCategory = function() {
+            var nam = $(".popover #catName").val();
+            if (nam != "") {
+                var lix = document.getElementById("cusItemMenu");
+                console.log(nam);
+                var li = document.createElement('a');
+                li.className = "dropdown-item btn btn-sm btn-warning";
+                li.innerHTML = nam;
+                divi = document.createElement('div');
+                divi.className = "dropdown-divider";
+                lix.appendChild(li);
+                lix.appendChild(divi);
+                var tx = document.getElementById("tcontent");
+                var txc = document.createElement('div');
+                txc.className = "tab-pane fade";
+                txc.setAttribute("role", "tabpanel");
+                txc.setAttribute("id", nam);
+                lix.setAttribute("data-toggle", "tab");
+                lix.setAttribute("href", "#" + nam);
+                tx.appendChild(txc);
+            }
         };
     </script>
 </body>
