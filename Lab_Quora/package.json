@@ -1,0 +1,18 @@
+{
+  "name": "prashn-uttar",
+  "version": "1.0.0",
+  "description": "Coursework | Internet and Web Systems",
+  "main": "server.js",
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "AngularJS",
+    "Node"
+  ],
+  "author": "Sushant Bansal <sb577@snu.edu.in>",
+  "license": "MIT",
+  "dependencies":{
+  	"gulp" :"latest",
+  	"express" :"latest"
+  }
+}
