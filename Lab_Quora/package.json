@@ -11,8 +11,9 @@
   ],
   "author": "Sushant Bansal <sb577@snu.edu.in>",
   "license": "MIT",
-  "dependencies":{
-  	"gulp" :"latest",
-  	"express" :"latest"
+  "dependencies": {
+    "express": "latest",
+    "gulp": "latest",
+    "mongoose": "^4.12.4"
   }
 }
