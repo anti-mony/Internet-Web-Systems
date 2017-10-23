@@ -381,6 +381,16 @@
                 txc.setAttribute("id", nam);
                 lix.setAttribute("data-toggle", "tab");
                 lix.setAttribute("href", "#" + nam);
+                var sCard = document.createElement('section');
+                sCard.className = "row mx-0";
+                var cuCard = document.createElement('div');
+                cuCard.className = "card col-md-2 mx-3 my-4 py-2";
+                cuCard.style.height = "384px";
+                var nCb = document.createElement('button');
+                nCb.innerHTML = '<img src="ADD.svg" />';
+                cuCard.appendChild(nCb);
+                sCard.appendChild(cuCard);
+                txc.appendChild(sCard);
                 tx.appendChild(txc);
             }
         };
