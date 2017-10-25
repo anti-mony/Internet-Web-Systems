@@ -1,5 +1,28 @@
-<html lang="en">
+<?php 
+include("config.php");
+session_start();
 
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	$myusername = mysqli_real_escape_string($db,$_POST['username']);
+	$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+
+	$sql = "SELECT * FROM users WHERE Username = '$myusername' and Password = '$mypassword'";
+	$result = mysqli_query($db,$sql);
+	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+	
+	$count = mysqli_num_rows($result);
+
+   	if($count == 1) {
+   		$_SESSION['login_user'] = $myusername;
+		header("location: index.php");
+	}else {
+		$error = "Your Login Name or Password is invalid";
+	}
+}
+
+?> 
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Prashn-Uttar</title>
@@ -19,26 +42,24 @@
 			<div class="box-header">
 				<h2>Log In</h2>
 			</div>
-			<label for="username">Username</label>
-			<br/>
-			<input type="text" id="username">
-			<br/>
-			<label for="password">Password</label>
-			<br/>
-			<input type="password" id="password">
-			<br/>
-			<button type="submit">Sign In</button>
-			<br/>
-			<a href="#"><p class="small">Forgot your password?</p></a>
+			<form action="" method="post" accept-charset="utf-8">
+				<label for="username">Username</label>
+				<br/>
+				<input type="text" name="username">
+				<br/>
+				<label for="password">Password</label>
+				<br/>
+				<input type="password" name="password">
+				<br/>
+				<button type="submit" value="submit" >Sign In</button>
+				<br/>
+				<a href="#"><p class="small">Forgot your password?</p></a>
+			</form>
 		</div>
 	</div>
 </body>
 
 <script>
-	$(document).ready(function () {
-    	$('#logo').addClass('animated fadeInDown');
-    	$("input:text:visible:first").focus();
-	});
 	$('#username').focus(function() {
 		$('label[for="username"]').addClass('selected');
 	});

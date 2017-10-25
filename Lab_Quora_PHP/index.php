@@ -1,6 +1,9 @@
 <!-- <!DOCTYPE html> -->
 <html lang="en">
-<?php require_once('dataB.php'); ?> 
+<?php 
+include('session.php');
+include('config.php'); 
+?> 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -44,13 +47,16 @@
                 <a class="nav-link disabled" href="#"><i class="fa fa-bell" aria-hidden="true"></i> Notifications</a>
             </li>
         </ul>
-        <form class="form-inline col-md-4">
+        <form class="navbar-nav form-inline col-md-3">
             <input class="form-control col-md-8" type="text" placeholder="Search" aria-label="Search">&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-success col-md-offset-2" type="submit">Search</button>
+            <button class="btn btn-success " type="submit">Search</button>
         </form>
-        <ul class="navbar-nav col-md-2 d-flex justify-content-center">
+        <ul class="navbar-nav col-md-3 d-flex justify-content-center">
             <li class="nav-item active">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fa fa-question" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i> Ask Question</button>
+            </li>&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+                <a class="btn btn-danger" href="logout.php"><i class="fa fa-power-off" aria-hidden="true" ></i> Logout </a>
             </li>
         </ul>
 
@@ -66,10 +72,8 @@
         $loca = $_GET['loc'];
         if(isset($loca)){
             $sql = "SELECT * FROM trendingtopics Where State = '$loca'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                $trnds = $result->fetch_assoc() ;
-            }    
+            $result = mysqli_query($db,$sql);
+            $trnds = mysqli_fetch_array($result,MYSQLI_ASSOC);   
         }
         
     ?>
