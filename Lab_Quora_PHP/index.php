@@ -1,15 +1,15 @@
-<!-- <!DOCTYPE html> -->
-<html lang="en">
 <?php 
 include('session.php');
 include('config.php'); 
 ?> 
+<html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Prashn-Uttar</title>
-    <!-- <link rel="shortcut icon" type="image/png" href="favicon.png" /> -->
+    <link rel="shortcut icon" type="image/png" href="ic_blur_on_black_48dp.png" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/e934e1e459.js"></script>
@@ -103,60 +103,14 @@ include('config.php');
                     <small>Edit</small>
                 </div>
             </a>
-            <a href="#" class="list-group-item border-0"><small>Top Stories</small></a>
+            <a onclick="topStories()" class="list-group-item list-group-item-action border-0"><small>Top Stories</small></a>
             <a href="#" class="list-group-item list-group-item-action border-0"><small>Favorites</small>
-            <a href="#" class="list-group-item list-group-item-action border-0"><small>Bookmarked Questions</small></a>
+            <a class="list-group-item list-group-item-action border-0" onclick="showBM()"><small>Bookmarked Questions</small></a>
             <a href="#" class="list-group-item list-group-item-action border-right-0 border-left-0 "><small>Silicon Valley</small></a>
             <a href="#" class="list-group-item list-group-item-action border-0"><small>Cows</small></a>
             <a href="#" class="list-group-item list-group-item-action border-0"><small>Technology</small></a>
         </aside>
-        <section class="col-md-10">
-            <div class="card">
-                <small class="card-header">Tag   Tag... </small>
-                <div class="card-body">
-                    <h4 class="card-title">Roin at metus vitae nisi tristique tincidunt eu non augue. Vivamus neque est, tincidunt at vestibulum rhoncus, sagittis id lectus.</h4>
-                    <div class="media">
-                        <img class="d-flex mr-3" src="ic_person_48px.svg" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="mt-0">Maryane Mathers, Imagination from Music</h6> Answered 20hrs ago, Upvoted by Chad
-                        </div>
-                    </div>
-                    <p class="card-text">Phasellus sit amet libero eget nisi mattis pretium. Proin dignissim, orci eu maximus sollicitudin, ex est efficitur velit, interdum rutrum mauris sapien ac tortor. Vestibulum a metus risus. Mauris tempor auctor consequat. Nullam tempor
-                        vehicula tristique. Aenean at diam pretium, pretium velit vitae, gravida nunc. Fusce sit amet diam vitae leo condimentum congue eget ac felis. Suspendisse mollis sit amet mi non sagittis.</p>
-                    <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
-                        <label class="btn btn-outline-success btn-sm">
-                                <input type="radio" name="options" id="option1" autocomplete="off"> <i class="fa fa-arrow-up" aria-hidden="true"></i>
-                        </label>
-                        <label class="btn btn-outline-danger btn-sm">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                        </label>
-                        <button class="btn btn-outline-warning btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <small class="card-header">Tag   Tag... </small>
-                <div class="card-body">
-                    <h4 class="card-title">Roin at metus vitae nisi tristique tincidunt eu non augue. Vivamus neque est, tincidunt at vestibulum rhoncus, sagittis id lectus.</h4>
-                    <div class="media">
-                        <img class="d-flex mr-3" src="ic_person_48px.svg" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="mt-0">Ruuh Smith, Imagination from AI Bots</h6> Answered 2 hrs ago, Upvoted by Zoe
-                        </div>
-                    </div>
-                    <p class="card-text">Phasellus sit amet libero eget nisi mattis pretium. Proin dignissim, orci eu maximus sollicitudin, ex est efficitur velit, interdum rutrum mauris sapien ac tortor. Vestibulum a metus risus. Mauris tempor auctor consequat. Nullam tempor
-                        vehicula tristique. Aenean at diam pretium, pretium velit vitae, gravida nunc. Fusce sit amet diam vitae leo condimentum congue eget ac felis. Suspendisse mollis sit amet mi non sagittis.</p>
-                    <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
-                        <label class="btn btn-outline-success btn-sm">
-                                        <input type="radio" name="options" id="option1" autocomplete="off"> <i class="fa fa-arrow-up" aria-hidden="true"></i>
-                        </label>
-                        <label class="btn btn-outline-danger btn-sm">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                        </label>
-                        <button class="btn btn-outline-warning btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            </div>
+        <section class="col-md-10" id="cards">
         </section>
     </div>
 
@@ -255,10 +209,12 @@ include('config.php');
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWbSrKPiCcxPVLAq4rovC6wHLN3kdk8uM&callback=initMap" async defer></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        $('#cards').load('dataLoader.php?BMV=0');
         $(function() {
             $("[data-toggle='tooltip']").tooltip();
         });
@@ -266,9 +222,22 @@ include('config.php');
             $('.btn-group').find('label').removeClass('active')
                 .end().find('[type="radio"]').prop('checked', false);
         });
+        
+        var addBMark = function(qID){
+            console.log(qID);
+            $.post('addBM.php', {'qid': qID});
+            console.log("Done!");
+        };
+
+        var showBM = function(){
+            $('#cards').load('dataLoader.php?BMV=1');
+        }
+
+        var topStories = function(){
+            $('#cards').load('dataLoader.php?BMV=0');
+        } 
+
     </script>
 </body>
 
 </html>
-
-

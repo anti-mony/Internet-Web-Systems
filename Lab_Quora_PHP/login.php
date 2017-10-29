@@ -28,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<title>Prashn-Uttar</title>
 
 	<!-- Google Fonts -->
+	<link rel="shortcut icon" type="image/png" href="ic_blur_on_black_48dp.png" />
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
